@@ -6,11 +6,11 @@
  */
 
 import React from "react"
+import styled, { createGlobalStyle } from "styled-components"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
-import "./layout.css"
+import Fonts from "../fonts"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -24,24 +24,12 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </div>
-      </>
+      <Wrapper>
+        <GlobalStyle />
+        <Fonts />
+        <Main>{children}</Main>
+        <Footer>© {new Date().getFullYear()}, Mesh Technologies Limited</Footer>
+      </Wrapper>
     )}
   />
 )
@@ -49,5 +37,52 @@ const Layout = ({ children }) => (
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
+
+const GlobalStyle = createGlobalStyle`
+  html {
+    font-family: "Avenir Next", Avenir, sans-serif;
+    color: #ffffff;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background: linear-gradient(#419799, #175358);
+  }
+`
+
+const Wrapper = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  height: 100vh;
+
+  align-items: center;
+  justify-content: center;
+`
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  align-items: center;
+  justify-content: center;
+`
+
+const Footer = styled.footer`
+  margin-bottom: 10px;
+
+  font-size: 18px;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 14px;
+  }
+`
 
 export default Layout

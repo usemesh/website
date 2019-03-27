@@ -1,21 +1,50 @@
 import React from "react"
-import { Link } from "gatsby"
+
+import styled from "styled-components"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <SEO title="MESH" keywords={["mesh"]} />
+    <Logo>MESH</Logo>
+    <SubHeading>Coming soon</SubHeading>
+    <MoreInfo href="mailto:hello@usemesh.net">hello@usemesh.net</MoreInfo>
   </Layout>
 )
+
+const Logo = styled.h1`
+  font-size: 150px;
+  font-weight: 600;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 50px;
+  }
+`
+
+const SubHeading = styled.h3`
+  font-size: 30px;
+  font-weight: 600;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 20px;
+  }
+`
+
+const MoreInfo = styled.a`
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @media only screen and (max-width: 480px) {
+    font-size: 14px;
+  }
+`
 
 export default IndexPage
