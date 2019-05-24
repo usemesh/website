@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `MESH`,
+    title: `Mesh`,
     description: `Mesh Technologies Website`,
     author: `@usemeshapp`,
   },

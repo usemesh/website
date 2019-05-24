@@ -6,7 +6,7 @@
  */
 
 import React from "react"
-import styled, { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle, css } from "styled-components"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
@@ -40,8 +40,9 @@ Layout.propTypes = {
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-family: "Avenir Next", Avenir, sans-serif;
-    color: #ffffff;
+    font-family: "Wavehaus", "Avenir Next", Avenir, sans-serif;
+    background-color: #FFFBF0;
+    color: #302B2B;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
   }
@@ -50,8 +51,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    background: linear-gradient(#419799, #175358);
   }
 `
 
@@ -60,10 +59,31 @@ const Wrapper = styled.div`
   flex: 1;
   flex-direction: column;
 
+  min-height: 700px;
   height: 100vh;
 
   align-items: center;
   justify-content: center;
+
+  @media only screen and (max-width: 768px) {
+    min-height: 400px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    min-height: 300px;
+  }
+`
+
+const ContainerWidth = css`
+  width: 1000px;
+
+  @media only screen and (max-width: 1100px) {
+    width: 768px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: calc(100% - 20px);
+  }
 `
 
 const Main = styled.main`
@@ -71,18 +91,15 @@ const Main = styled.main`
   flex-direction: column;
   flex: 1;
 
-  align-items: center;
-  justify-content: center;
+  ${ContainerWidth}
 `
 
 const Footer = styled.footer`
   margin-bottom: 10px;
 
-  font-size: 18px;
+  font-size: 14px;
 
-  @media only screen and (max-width: 480px) {
-    font-size: 14px;
-  }
+  ${ContainerWidth}
 `
 
 export default Layout
